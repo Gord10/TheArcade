@@ -37,6 +37,7 @@ namespace TinySki
         public float flagYSpace = 0.32f;
 
         private GameObject[] obstacles;
+        private GameUi gameUi;
         
         private void Awake()
         {
@@ -70,10 +71,13 @@ namespace TinySki
             {
                 Vector3 obstaclePosition = new Vector3();
                 obstaclePosition.x = Random.Range(-maxObstacleX, maxObstacleX) / 100f;
-                obstaclePosition.y = (-i - 1) * obstacleYSpace;
+                obstaclePosition.y = (-i - 3) * obstacleYSpace;
                 GameObject randomObstacle = obstaclePrefabs[0];
                 obstacles[i] = Instantiate(randomObstacle, obstaclePosition, Quaternion.identity, transform);
             }
+
+            gameUi = FindAnyObjectByType<GameUi>();
+            SetGameState(GameState.Title);
         }
 
         //NPC will try to avoid the next obstacle. They need to know the position of the next one for that.
@@ -110,6 +114,7 @@ namespace TinySki
         void SetGameState(GameState newGameState)
         {
             gameState = newGameState;
+            gameUi.SetScreen(gameState);
         }
 
         IEnumerator StartCountDown()
@@ -118,6 +123,7 @@ namespace TinySki
             while (gameState == GameState.InGame)
             {
                 timeLimit--;
+                gameUi.ShowCountdown(timeLimit);
                 if (timeLimit <= 0)
                 {
                     OnFail();
@@ -136,7 +142,6 @@ namespace TinySki
                 print("Success!");
                 StopCoroutine(StartCountDown());
             }
-
         }
 
         public void OnFail()

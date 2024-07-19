@@ -20,12 +20,19 @@ namespace TinySki
 
         private void FixedUpdate()
         {
-            if (gameManager && gameManager.gameState != GameManager.GameState.InGame)
+            if (gameManager)
             {
-                return;
+                switch (gameManager.gameState)
+                {
+                    case GameManager.GameState.Success:
+                        rigidbody2D.velocity *= 0.96f; //Gradually slow down
+                        break;
+                    
+                    case GameManager.GameState.InGame:
+                        rigidbody2D.AddForce(desiredMovement, ForceMode2D.Force);
+                        break;
+                }
             }
-            
-            rigidbody2D.AddForce(desiredMovement, ForceMode2D.Force);
         }
     }
 }
