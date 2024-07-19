@@ -2,7 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Player : MonoBehaviour
+namespace ArcadeHouse
+{
+    public class Player : MonoBehaviour
 {
     public float rotationSpeed = 10;
     public bool isNpc = false;
@@ -109,4 +111,6 @@ public class Player : MonoBehaviour
             }
         }
     }
+}
+
 }
