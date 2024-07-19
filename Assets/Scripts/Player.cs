@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public float rotationSpeed = 10;
     public bool isNpc = false;
+    public float movementSpeed = 1.5f;
 
     private NavMeshAgent navMeshAgent;
     private CharacterController characterController;
@@ -13,6 +14,8 @@ public class Player : MonoBehaviour
     private static readonly int Walking = Animator.StringToHash("Walking");
     private Player friendPlayer;
 
+    private ArcadeMachine chosenArcadeMachine = null; //if null, none wasn't chosen
+    
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -38,31 +41,72 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isWalking = false;
+        bool willWalkingAnimationPlay = false;
+        Quaternion targetRotation = transform.rotation;
+        
         if (!isNpc)
         {
             Vector3 movement = new Vector3();
-            movement.x = Input.GetAxis("Horizontal");
-            movement.z = Input.GetAxis("Vertical");
-            movement = Vector3.ClampMagnitude(movement, 1);
 
-            isWalking = movement.sqrMagnitude > 0;
+            if (!chosenArcadeMachine)
+            {
+                movement.x = Input.GetAxis("Horizontal");
+                movement.z = Input.GetAxis("Vertical");
+                movement = Vector3.ClampMagnitude(movement, 1);
+
+                willWalkingAnimationPlay = movement.sqrMagnitude > 0.2f;
+            }
+            else
+            {
+                Vector3 lookDirection = chosenArcadeMachine.transform.position - transform.position;
+                lookDirection.y = 0;
+                targetRotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+            }
             
-            characterController.Move(movement * Time.deltaTime);
-        
+            characterController.Move(movement * (Time.deltaTime * movementSpeed));
             if (movement.sqrMagnitude > 0.2f)
             {
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(movement, Vector3.up),
-                    Time.deltaTime * rotationSpeed);
+                targetRotation = Quaternion.LookRotation(movement, Vector3.up);
             }
         }
         else if(navMeshAgent && friendPlayer)
         {
-            navMeshAgent.SetDestination(friendPlayer.transform.position);
-            isWalking = navMeshAgent.velocity.sqrMagnitude > 0;
+            Vector3 targetPos = (friendPlayer.chosenArcadeMachine)
+                ? friendPlayer.chosenArcadeMachine.transform.position
+                : friendPlayer.transform.position;
+            
+            navMeshAgent.SetDestination(targetPos);
+            willWalkingAnimationPlay = navMeshAgent.velocity.sqrMagnitude > 0;
         }
         
-        animator.SetBool(Walking, isWalking);
+        animator.SetBool(Walking, willWalkingAnimationPlay);
+        
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation,
+            Time.deltaTime * rotationSpeed);
 
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (!isNpc && hit.collider.CompareTag("ArcadeMachine"))
+        {
+            if(hit.collider.TryGetComponent(out ArcadeMachine arcadeMachine))
+            {
+                chosenArcadeMachine = arcadeMachine;
+                chosenArcadeMachine.Choose();
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        print(other.collider.ToString());
+        if (other.collider.CompareTag("ArcadeMachine"))
+        {
+            if(other.collider.TryGetComponent(out ArcadeMachine arcadeMachine))
+            {
+                arcadeMachine.Choose();
+            }
+        }
     }
 }
