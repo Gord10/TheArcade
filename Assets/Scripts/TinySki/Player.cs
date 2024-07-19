@@ -17,6 +17,8 @@ namespace TinySki
         protected override void Awake()
         {
             base.Awake();
+            desiredMovement = new Vector2();
+            
             Player[] players = FindObjectsByType<Player>(FindObjectsSortMode.None);
             int i;
             for (i = 0; i < players.Length; i++)
@@ -96,8 +98,6 @@ namespace TinySki
         // Update is called once per frame
         private void Update()
         {
-            
-            
             if (!isNpc)
             {
                 desiredMovement = new Vector2();
@@ -108,6 +108,11 @@ namespace TinySki
                 desiredMovement *= speed;
 
                 desiredMovement += gameManager.gravity;
+            }
+
+            if (transform.position.y < gameManager.finishLineY)
+            {
+                gameManager.OnSuccess();
             }
         }
     }

@@ -163,14 +163,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: {x: 0, y: -0.1}
+  finishLineY: -30
+  timeLimit: 60
+  gameState: 0
   obstaclePrefabs:
   - {fileID: 4745526092711416404, guid: bea72f2a076f0734993856143130705a, type: 3}
   obstacleAmount: 60
   maxObstacleX: 100
   obstacleYSpace: 0.64
-  flagPrefab: {fileID: 2961487913199232393, guid: b82b2b463973af04fae170edcf7f0b0d, type: 3}
+  blueFlagPrefab: {fileID: 2961487913199232393, guid: b82b2b463973af04fae170edcf7f0b0d, type: 3}
+  redFlagPrefab: {fileID: 2961487913199232393, guid: 0c1e7ced72c54a747b40f35ebbb0d008, type: 3}
   flagSpawnX: -1.28
-  flagAmountPerLine: 200
   flagYSpace: 0.32
 --- !u!1 &1842897255
 GameObject:
@@ -423,63 +426,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
---- !u!1001 &4619645712802354720
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 463105169359293897, guid: bea72f2a076f0734993856143130705a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.006
-      objectReference: {fileID: 0}
-    - target: {fileID: 463105169359293897, guid: bea72f2a076f0734993856143130705a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.6957
-      objectReference: {fileID: 0}
-    - target: {fileID: 463105169359293897, guid: bea72f2a076f0734993856143130705a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463105169359293897, guid: bea72f2a076f0734993856143130705a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 463105169359293897, guid: bea72f2a076f0734993856143130705a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463105169359293897, guid: bea72f2a076f0734993856143130705a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463105169359293897, guid: bea72f2a076f0734993856143130705a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463105169359293897, guid: bea72f2a076f0734993856143130705a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463105169359293897, guid: bea72f2a076f0734993856143130705a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463105169359293897, guid: bea72f2a076f0734993856143130705a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4745526092711416404, guid: bea72f2a076f0734993856143130705a, type: 3}
-      propertyPath: m_Name
-      value: Obstacle Tree 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bea72f2a076f0734993856143130705a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -488,4 +434,3 @@ SceneRoots:
   - {fileID: 1989563752}
   - {fileID: 736680452}
   - {fileID: 1842897258}
-  - {fileID: 4619645712802354720}

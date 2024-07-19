@@ -20,6 +20,11 @@ namespace TinySki
 
         private void FixedUpdate()
         {
+            if (gameManager && gameManager.gameState != GameManager.GameState.InGame)
+            {
+                return;
+            }
+            
             rigidbody2D.AddForce(desiredMovement, ForceMode2D.Force);
         }
     }

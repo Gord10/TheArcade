@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,6 +9,19 @@ namespace TinySki
     public class GameManager : MonoBehaviour
     {
         public Vector2 gravity; //This value will be added to desiredMovement.y of skiers
+        public float finishLineY = -30;
+        public int timeLimit = 60;
+
+        public enum GameState
+        {
+            Title,
+            InGame,
+            Success,
+            Fail
+        }
+
+        public GameState gameState = GameState.Title;
+        
         [Header("Obstacles")]
         public GameObject[] obstaclePrefabs;
 
@@ -15,10 +30,10 @@ namespace TinySki
         public float obstacleYSpace = 1f;
 
         [Header("Flags")]
-        public GameObject flagPrefab;
-        public float flagSpawnX = 2f;
+        public GameObject blueFlagPrefab;
 
-        public float flagAmountPerLine = 40;
+        public GameObject redFlagPrefab;
+        public float flagSpawnX = 2f;
         public float flagYSpace = 0.32f;
 
         private GameObject[] obstacles;
@@ -26,25 +41,36 @@ namespace TinySki
         private void Awake()
         {
             int i;
+
+            float flagY = 0;
+            Vector3 flagPosition = new Vector3();
             
-            for (i = 0; i < flagAmountPerLine; i++)
+            while (flagY > finishLineY)
             {
-                Vector3 flagPosition = new Vector3();
                 flagPosition.x = flagSpawnX;
-                flagPosition.y = -flagYSpace * i;
-                Instantiate(flagPrefab, flagPosition, Quaternion.identity, transform);
+                flagPosition.y = flagY;
+                Instantiate(blueFlagPrefab, flagPosition, Quaternion.identity, transform);
 
                 flagPosition.x *= -1;
-                Instantiate(flagPrefab, flagPosition, Quaternion.identity, transform);
+                Instantiate(blueFlagPrefab, flagPosition, Quaternion.identity, transform);
+                flagY -= flagYSpace;
             }
+
+            flagPosition.x = flagSpawnX;
+            flagPosition.y = flagY;
+            Instantiate(redFlagPrefab, flagPosition, Quaternion.identity, transform);
             
+            flagPosition.x = -flagSpawnX;
+            Instantiate(redFlagPrefab, flagPosition, Quaternion.identity, transform);
+            
+
             obstacles = new GameObject[obstacleAmount];
 
             for (i = 0; i < obstacleAmount; i++)
             {
                 Vector3 obstaclePosition = new Vector3();
                 obstaclePosition.x = Random.Range(-maxObstacleX, maxObstacleX) / 100f;
-                obstaclePosition.y = -i * obstacleYSpace;
+                obstaclePosition.y = (-i - 1) * obstacleYSpace;
                 GameObject randomObstacle = obstaclePrefabs[0];
                 obstacles[i] = Instantiate(randomObstacle, obstaclePosition, Quaternion.identity, transform);
             }
@@ -70,6 +96,57 @@ namespace TinySki
             }
 
             return null;
+        }
+
+        private void Update()
+        {
+            if (gameState == GameState.Title && Input.anyKeyDown)
+            {
+                SetGameState(GameState.InGame);
+                StartCoroutine(StartCountDown());
+            }
+        }
+
+        void SetGameState(GameState newGameState)
+        {
+            gameState = newGameState;
+        }
+
+        IEnumerator StartCountDown()
+        {
+            WaitForSeconds wait = new WaitForSeconds(1);
+            while (gameState == GameState.InGame)
+            {
+                timeLimit--;
+                if (timeLimit <= 0)
+                {
+                    OnFail();
+                }
+                print(timeLimit);
+                yield return wait;
+                
+            }
+        }
+
+        public void OnSuccess()
+        {
+            if (gameState == GameState.InGame)
+            {
+                SetGameState(GameState.Success);
+                print("Success!");
+                StopCoroutine(StartCountDown());
+            }
+
+        }
+
+        public void OnFail()
+        {
+            if (gameState == GameState.InGame)
+            {
+                SetGameState(GameState.Fail);
+                print("Success!");
+                StopCoroutine(StartCountDown());
+            }
         }
     }
 }
