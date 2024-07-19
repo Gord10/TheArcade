@@ -5491,6 +5491,7 @@ Transform:
   - {fileID: 1827769969}
   - {fileID: 610699197}
   - {fileID: 480511023}
+  - {fileID: 1375749998}
   m_Father: {fileID: 1050379198}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &950198273
@@ -6563,7 +6564,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 948085777}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1f12bade5c2a6ca40a016748696f977b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6583,7 +6584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f12bade5c2a6ca40a016748696f977b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f12bade5c2a6ca40a016748696f977b, type: 3}
       propertyPath: m_LocalRotation.y
@@ -6591,7 +6592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f12bade5c2a6ca40a016748696f977b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f12bade5c2a6ca40a016748696f977b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8167,6 +8168,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 72c46a768d7e6a54fb7dc65a193e25ee, type: 3}
   m_PrefabInstance: {fileID: 1367112980}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1375749998 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f12bade5c2a6ca40a016748696f977b, type: 3}
+  m_PrefabInstance: {fileID: 1097346293}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1384243472
 PrefabInstance:
@@ -12960,7 +12966,6 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 1050379198}
   - {fileID: 4262776234799165310}
-  - {fileID: 1097346293}
   - {fileID: 1466025218}
   - {fileID: 1957066174}
   - {fileID: 1906567402}

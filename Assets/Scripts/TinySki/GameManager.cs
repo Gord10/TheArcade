@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using ArcadeShared;
 
 namespace TinySki
 {
@@ -36,8 +37,12 @@ namespace TinySki
         public float flagSpawnX = 2f;
         public float flagYSpace = 0.32f;
 
+        public Player player;
+        public Player npc;
+
         private GameObject[] obstacles;
         private GameUi gameUi;
+        private DialogueUi dialogueUi;
         
         private void Awake()
         {
@@ -77,6 +82,8 @@ namespace TinySki
             }
 
             gameUi = FindAnyObjectByType<GameUi>();
+            dialogueUi = FindAnyObjectByType<DialogueUi>();
+            dialogueUi.gameObject.SetActive(false);
             SetGameState(GameState.Title);
         }
 
@@ -124,6 +131,40 @@ namespace TinySki
             {
                 timeLimit--;
                 gameUi.ShowCountdown(timeLimit);
+                
+                if (timeLimit == 58)
+                {
+                    player.Say("Here we go!", 3);
+                }
+                
+                if (timeLimit == 50)
+                {
+                    npc.Say("I guess I remember this game.", 3);
+                }
+
+                if (timeLimit == 40)
+                {
+                    npc.Say("Wasn't something supposed to chase us?", 3);
+                }
+                if (timeLimit == 35)
+                {
+                    npc.Say("Like Barefoot?", 2);
+                }
+                if (timeLimit == 32)
+                {
+                    player.Say("No, that was another game!", 3);
+                }
+                
+                if (timeLimit == 22)
+                {
+                    player.Say("Also, it's Bigfoot.", 3);
+                }
+                
+                if (timeLimit == 10)
+                {
+                    player.Say("We are almost there!", 3);
+                }
+                
                 if (timeLimit <= 0)
                 {
                     OnFail();

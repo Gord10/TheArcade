@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace TinySki
@@ -12,7 +13,10 @@ namespace TinySki
         public float npcObstacleAvoidance = 0.2f;
         public float desiredMinDistanceFromPlayer = 0.2f; //NPC will use this value to know when to avoid the player
         public float yCatchUpThreshold = 1f; //If y difference between the friend is higher than this, then NPC will try to catch up with the friend
+        
+        
         private Player friend;
+        private TextMeshPro speechText;
 
         protected override void Awake()
         {
@@ -33,6 +37,26 @@ namespace TinySki
             {
                 StartCoroutine(NpcDecisions(0.1f));
             }
+
+            speechText = GetComponentInChildren<TextMeshPro>();
+            if (speechText)
+            {
+                speechText.text = "";
+            }
+            
+        }
+
+        public void Say(string text, float appearanceTime)
+        {
+            speechText.text = text;
+            speechText.enabled = true;
+            StartCoroutine(HideTextAfterWait(appearanceTime));
+        }
+
+        IEnumerator HideTextAfterWait(float waitTime)
+        {
+            yield return new WaitForSeconds(waitTime);
+            speechText.enabled = false;
         }
 
         void DecideMovement()

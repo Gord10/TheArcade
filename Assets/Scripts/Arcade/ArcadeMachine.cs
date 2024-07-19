@@ -1,6 +1,7 @@
 using System;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ArcadeHouse
 {
@@ -21,7 +22,13 @@ namespace ArcadeHouse
             if (cinemachineCamera)
             {
                 cinemachineCamera.gameObject.SetActive(true);
+                Invoke("StartArcadeGame", 2);
             }
+        }
+
+        void StartArcadeGame()
+        {
+            SceneManager.LoadScene("TinySki");
         }
     }
 }
