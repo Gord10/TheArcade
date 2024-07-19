@@ -9,11 +9,13 @@ namespace TinySki
         protected Rigidbody2D rigidbody2D;
 
         protected Vector2 desiredMovement;
+        protected GameManager gameManager;
     
-        private void Awake()
+        protected virtual void Awake()
         {
             desiredMovement = Vector2.zero;
             rigidbody2D = GetComponent<Rigidbody2D>();
+            gameManager = FindAnyObjectByType<GameManager>();
         }
 
         private void FixedUpdate()
