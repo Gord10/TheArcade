@@ -8,7 +8,7 @@ namespace ArcadeHouse
     public class ArcadeMachine : MonoBehaviour
     {
         public CinemachineCamera cinemachineCamera;
-
+        public string sceneName;
         private void Awake()
         {
             if (cinemachineCamera)
@@ -28,7 +28,7 @@ namespace ArcadeHouse
 
         void StartArcadeGame()
         {
-            SceneManager.LoadScene("TinySki");
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

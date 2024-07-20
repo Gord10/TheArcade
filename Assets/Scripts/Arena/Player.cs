@@ -23,9 +23,12 @@ namespace Arena
                 Quaternion targetRotation = Quaternion.LookRotation(movement);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
             }
+
             animator.SetBool(Walking, movement.sqrMagnitude > 0);
+            movement.y = -1f;
+            
             characterController.Move(movement * (movementSpeed * Time.deltaTime));
-            movement.y = -10f;
+            
         }
     }
 }

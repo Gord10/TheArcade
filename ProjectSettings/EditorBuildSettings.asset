@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TinySki.unity
     guid: 73989a77ad840054e9b4dd889bb37bd1
+  - enabled: 1
+    path: Assets/Scenes/Arena.unity
+    guid: d8d570edbab3f0f49b658fe11d0f3030
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

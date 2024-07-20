@@ -67,7 +67,7 @@ namespace Arena
                 int targetGladiatorIndex = Random.Range(0, gladiators.Length);
                 Gladiator targetGladiator = gladiators[targetGladiatorIndex];
                 Vector3 targetPos = targetGladiator.targetPoint.position;
-                targetPos.x += Random.Range(-0.2f, 0.2f);
+                targetPos.x += Random.Range(-0.05f, 0.05f);
                 
                 throwable.Throw(targetPos, throwSpeed);
                 latestThrowable = throwable;

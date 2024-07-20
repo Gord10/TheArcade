@@ -57,6 +57,7 @@ namespace ArcadeHouse
                 movement = Vector3.ClampMagnitude(movement, 1);
 
                 willWalkingAnimationPlay = movement.sqrMagnitude > 0.2f;
+                
             }
             else
             {
@@ -65,11 +66,14 @@ namespace ArcadeHouse
                 targetRotation = Quaternion.LookRotation(lookDirection, Vector3.up);
             }
             
-            characterController.Move(movement * (Time.deltaTime * movementSpeed));
             if (movement.sqrMagnitude > 0.2f)
             {
                 targetRotation = Quaternion.LookRotation(movement, Vector3.up);
             }
+            
+            movement.y = -1;
+            characterController.Move(movement * (Time.deltaTime * movementSpeed));
+
         }
         else if(navMeshAgent && friendPlayer)
         {

@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using ArcadeShared;
+using DG.Tweening;
+
 namespace ArcadeShared
 {
     public class ArcadeGameUi : MonoBehaviour
@@ -43,7 +45,15 @@ namespace ArcadeShared
             int i;
             for (i = 0; i < hearts.Length; i++)
             {
-                hearts[i].color = (currentLives <= i) ? Color.black : Color.white;
+                if (i == currentLives)
+                {
+                    hearts[i].CrossFadeColor(Color.black, 0.25f, false, false);
+                }
+                else
+                {
+                    hearts[i].color = (currentLives <= i) ? Color.black : Color.white;
+                }
+                
             }
         }
 
