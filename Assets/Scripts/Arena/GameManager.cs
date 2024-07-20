@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using ArcadeShared;
 
 namespace Arena
 {
@@ -13,12 +14,29 @@ namespace Arena
         public Throwable[] throwablePrefabs;
         public Transform[] throwableSpawnPoints;
         public float throwSpeed = 10;
+        public int timeLimit = 60;
 
         public Throwable latestThrowable;
 
+        public GameState gameState;
+        private ArcadeGameUi gameUi;
+
+        private CharacterSpeech girlSpeech, boySpeech;
+
         private void Awake()
         {
-            StartCoroutine(ThrowItemsToGladiators());
+            gameUi = FindAnyObjectByType<ArcadeGameUi>();
+            SetGameState(GameState.Title);
+            girlSpeech = gladiators[0].speech;
+            boySpeech = gladiators[1].speech;
+            //StartCoroutine(ThrowItemsToGladiators());
+
+        }
+
+        void SetGameState(GameState newGameState)
+        {
+            gameState = newGameState;
+            gameUi.SetScreen(newGameState);
         }
 
         public Vector3 GetRandomPointInCenter()
@@ -32,9 +50,10 @@ namespace Arena
         IEnumerator ThrowItemsToGladiators()
         {
             WaitForSeconds wait = new WaitForSeconds(throwInterval);
-
-            while (true)
-            {
+            yield return wait;
+            
+            while (gameState == GameState.InGame && timeLimit > 4)
+            {   
                 int spawnPointIndex = Random.Range(0, throwableSpawnPoints.Length);
                 Transform spawnTransform = throwableSpawnPoints[spawnPointIndex];
                 Vector3 spawnPoint = spawnTransform.position;
@@ -50,9 +69,85 @@ namespace Arena
                 
                 throwable.Throw(targetPos, throwSpeed);
                 latestThrowable = throwable;
+                
                 yield return wait;
             }
         }
 
+        IEnumerator Countdown()
+        {
+            WaitForSeconds wait = new WaitForSeconds(1);
+            while (timeLimit > 0 && gameState == GameState.InGame)
+            {
+                gameUi.ShowCountdown(timeLimit);
+                yield return wait;
+                timeLimit--;
+
+                switch (timeLimit)
+                {
+                    case 56:
+                        boySpeech.Say("No idea.", 3f);
+                        break;
+                        
+                    case 52:
+                        boySpeech.Say("This doesn't look like an arcade game, anyway.", 5f);
+                        break;
+                    
+                    case 46:
+                        girlSpeech.Say("Technology advanced so far.", 4f);
+                        break;
+                    
+                    case 26:
+                        girlSpeech.Say("How's dad holding?", 3f);
+                        break;
+                    
+                    case 22:
+                        boySpeech.Say("As usual.", 3f);
+                        break;
+                    
+                    case 18:
+                        boySpeech.Say("How about mom?", 3f);
+                        break;
+                    
+                    case 14:
+                        girlSpeech.Say("Same. But she will get better.", 3f);
+                        break;
+                    
+                    case 8:
+                        girlSpeech.Say("Maybe this was for the best.", 4f);
+                        break;
+                }
+            }
+
+            if (timeLimit <= 0 && gameState == GameState.InGame)
+            {
+                SetGameState(GameState.Success);
+                gladiators[0].StopMovement();
+                gladiators[1].StopMovement();
+            }
+        }
+
+        private void Update()
+        {
+            if (gameState == GameState.Title && Time.timeSinceLevelLoad > 0.3f && Input.anyKeyDown)
+            {
+                SetGameState(GameState.InGame);
+                StartCoroutine(ThrowItemsToGladiators());
+                StartCoroutine(Countdown());
+                girlSpeech.Say("Why do they always use \"V\" as \"U\" in Roman texts?", 3f);
+            }
+        }
+
+        public void OnPlayerHit()
+        {
+            if (gameState == GameState.InGame)
+            {
+                StopCoroutine(ThrowItemsToGladiators());
+                StopCoroutine(Countdown());
+                SetGameState(GameState.Fail);
+                gladiators[0].StopMovement();
+                gladiators[1].StopMovement();
+            }
+        }
     }
 }

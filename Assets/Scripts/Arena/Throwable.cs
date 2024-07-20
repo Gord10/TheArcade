@@ -27,7 +27,7 @@ namespace Arena
         {
             if (other.collider.CompareTag("Player") && CanHurtPlayer())
             {
-                other.collider.GetComponent<BaseCharacter>().OnHit();
+                other.collider.GetComponent<Gladiator>().OnHit();
                 print("Throwable item touched player");
             }
 

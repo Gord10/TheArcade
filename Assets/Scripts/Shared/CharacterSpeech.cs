@@ -8,15 +8,19 @@ namespace ArcadeShared
     {
         public TextMeshPro text;
 
+        private Transform cam;
+        
         private void Awake()
         {
             text.enabled = false;
+            cam = Camera.main.transform;
         }
 
         public void Say(string speech, float showTime)
         {
             text.text = speech;
             text.enabled = true;
+            StopAllCoroutines();
             StartCoroutine(HideAfterWait(showTime));
         }
 
@@ -24,6 +28,11 @@ namespace ArcadeShared
         {
             yield return new WaitForSeconds(waitTime);
             text.enabled = false;
+        }
+
+        private void LateUpdate()
+        {
+            transform.rotation = cam.transform.rotation;
         }
     }
 }

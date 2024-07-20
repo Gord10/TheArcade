@@ -1,7 +1,10 @@
 {
     "name": "Arena",
     "rootNamespace": "Arena",
-    "references": [],
+    "references": [
+        "GUID:6fae1da0c0dc4844ba3f0ed8c25da035",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

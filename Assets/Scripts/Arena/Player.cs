@@ -1,3 +1,4 @@
+using ArcadeShared;
 using UnityEngine;
 
 namespace Arena
@@ -5,9 +6,13 @@ namespace Arena
     public class Player : Gladiator
     {
         // Update is called once per frame
-        protected override void Update()
+        protected void Update()
         {
-            base.Update();
+            if (gameManager.gameState != GameState.InGame)
+            {
+                return;
+            }
+            
             Vector3 movement = new Vector3();
             movement.x = Input.GetAxis("Horizontal");
             movement.z = Input.GetAxis("Vertical");
@@ -19,19 +24,8 @@ namespace Arena
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
             }
             animator.SetBool(Walking, movement.sqrMagnitude > 0);
+            characterController.Move(movement * (movementSpeed * Time.deltaTime));
             movement.y = -10f;
-            if (attackCooldownCounter <= 0)
-            {
-                //transform.forward = movement;
-
-                characterController.Move(movement * (movementSpeed * Time.deltaTime));
-
-                if (Input.GetKeyDown(KeyCode.Z))
-                {
-                    Attack();
-                }
-            }
-
         }
     }
 }

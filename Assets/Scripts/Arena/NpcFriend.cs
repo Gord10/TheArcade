@@ -1,3 +1,4 @@
+using ArcadeShared;
 using UnityEngine;
 
 namespace Arena
@@ -7,9 +8,12 @@ namespace Arena
         private bool isRunningFromThrown = false;
         private Vector3 randomPointInArena;
         
-        protected override void Update()
+        protected void Update()
         {
-            base.Update();
+            if (gameManager.gameState != GameState.InGame)
+            {
+                return;
+            }
             Vector3 movementDirection = new Vector3();
             if (gameManager)
             {
