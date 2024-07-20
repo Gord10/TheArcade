@@ -29,6 +29,11 @@ namespace ArcadeShared
             }
         }
 
+        public static int GetCompletedGameNum()
+        {
+            return completedGameNames.Count;
+        }
+
         public static bool IsGameSucceeded(string sceneName)
         {
             return completedGameNames.Contains(sceneName);
