@@ -126,6 +126,7 @@ namespace Arena
                 SetGameState(GameState.Success);
                 gladiators[0].StopMovement();
                 gladiators[1].StopMovement();
+                ArcadeSceneManager.OnGameSuccess();
             }
         }
 

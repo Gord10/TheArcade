@@ -186,6 +186,7 @@ namespace TinySki
                 print("Success!");
                 StopCoroutine(StartCountDown());
                 audioSource.Play();
+                ArcadeSceneManager.OnGameSuccess();
             }
         }
 
