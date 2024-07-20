@@ -139,6 +139,12 @@ namespace TinySki
                 didReachFinish = true;
                 gameManager.OnSuccess();
             }
+
+            if (rigidbody2D.velocity.y < 0)
+            {
+                animator.speed = 1f * -rigidbody2D.velocity.y;
+            }
+            
         }
     }
 
