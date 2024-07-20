@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - EndGameTrigger
   - EndGameCollider
+  - Trap
+  - PollenEfector
   layers:
   - Default
   - TransparentFX

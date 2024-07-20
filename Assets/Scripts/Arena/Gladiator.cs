@@ -1,3 +1,4 @@
+using System;
 using ArcadeShared;
 using UnityEngine;
 
@@ -27,5 +28,19 @@ namespace Arena
         {
             cameraShake.Shake();
         }
+
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            if (hit.collider.CompareTag("Trap") && hit.collider.TryGetComponent(out Trap trap))
+            {
+                if (trap.CanHarm)
+                {
+                    OnHit();
+                    trap.Open();
+                }
+
+            }
+        }
+        
     }
 }
