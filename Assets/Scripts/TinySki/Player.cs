@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using ArcadeShared;
 
 namespace TinySki
 {
@@ -17,8 +16,6 @@ namespace TinySki
         
         
         private Player friend;
-        private TextMeshPro speechText;
-        
 
         protected override void Awake()
         {
@@ -39,27 +36,13 @@ namespace TinySki
             {
                 StartCoroutine(NpcDecisions(0.05f));
             }
-
-            speechText = GetComponentInChildren<TextMeshPro>();
-            if (speechText)
-            {
-                speechText.text = "";
-            }
         }
 
-        public void Say(string text, float appearanceTime)
+        public void Say(string speech, float appearanceTime)
         {
-            speechText.text = text;
-            speechText.enabled = true;
-            StartCoroutine(HideTextAfterWait(appearanceTime));
+            speechText.Say(speech, appearanceTime);
         }
-
-        IEnumerator HideTextAfterWait(float waitTime)
-        {
-            yield return new WaitForSeconds(waitTime);
-            speechText.enabled = false;
-        }
-
+        
         void DecideMovement()
         {
             desiredMovement = new Vector2();

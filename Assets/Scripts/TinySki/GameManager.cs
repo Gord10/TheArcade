@@ -36,7 +36,6 @@ namespace TinySki
 
         private GameObject[] obstacles;
         private ArcadeGameUi gameUi;
-        private DialogueUi dialogueUi;
         
         private void Awake()
         {
@@ -87,8 +86,6 @@ namespace TinySki
             }
 
             gameUi = FindAnyObjectByType<ArcadeGameUi>();
-            dialogueUi = FindAnyObjectByType<DialogueUi>();
-            dialogueUi.gameObject.SetActive(false);
             SetGameState(GameState.Title);
             audioSource = GetComponent<AudioSource>();
         }

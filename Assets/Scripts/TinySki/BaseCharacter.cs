@@ -7,6 +7,7 @@ namespace TinySki
     public class BaseCharacter : MonoBehaviour
     {
         public float speed = 2;
+        public CharacterSpeech speechText;
         protected Rigidbody2D rigidbody2D;
         protected Animator animator;
         protected AudioSource audio;
@@ -35,19 +36,6 @@ namespace TinySki
             {
                 rigidbody2D.AddForce(desiredMovement, ForceMode2D.Force);
             }
-            /*if (gameManager)
-            {
-                switch (gameManager.gameState)
-                {
-                    case GameManager.GameState.Success:
-                        rigidbody2D.velocity *= 0.96f; //Gradually slow down
-                        break;
-                    
-                    case GameManager.GameState.InGame:
-                        rigidbody2D.AddForce(desiredMovement, ForceMode2D.Force);
-                        break;
-                }
-            }*/
         }
     }
 }
