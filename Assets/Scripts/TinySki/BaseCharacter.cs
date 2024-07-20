@@ -10,6 +10,7 @@ namespace TinySki
 
         protected Vector2 desiredMovement;
         protected GameManager gameManager;
+        protected bool didReachFinish = false;
     
         protected virtual void Awake()
         {
@@ -20,7 +21,16 @@ namespace TinySki
 
         private void FixedUpdate()
         {
-            if (gameManager)
+            if (didReachFinish)
+            {
+                rigidbody2D.velocity *= 0.96f; //Gradually slow down
+            }
+
+            if (gameManager && gameManager.gameState == GameManager.GameState.InGame)
+            {
+                rigidbody2D.AddForce(desiredMovement, ForceMode2D.Force);
+            }
+            /*if (gameManager)
             {
                 switch (gameManager.gameState)
                 {
@@ -32,7 +42,7 @@ namespace TinySki
                         rigidbody2D.AddForce(desiredMovement, ForceMode2D.Force);
                         break;
                 }
-            }
+            }*/
         }
     }
 }

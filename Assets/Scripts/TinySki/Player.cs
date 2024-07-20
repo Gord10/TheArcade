@@ -17,6 +17,7 @@ namespace TinySki
         
         private Player friend;
         private TextMeshPro speechText;
+        
 
         protected override void Awake()
         {
@@ -35,7 +36,7 @@ namespace TinySki
 
             if (isNpc)
             {
-                StartCoroutine(NpcDecisions(0.1f));
+                StartCoroutine(NpcDecisions(0.05f));
             }
 
             speechText = GetComponentInChildren<TextMeshPro>();
@@ -43,7 +44,6 @@ namespace TinySki
             {
                 speechText.text = "";
             }
-            
         }
 
         public void Say(string text, float appearanceTime)
@@ -136,6 +136,7 @@ namespace TinySki
 
             if (transform.position.y < gameManager.finishLineY)
             {
+                didReachFinish = true;
                 gameManager.OnSuccess();
             }
         }

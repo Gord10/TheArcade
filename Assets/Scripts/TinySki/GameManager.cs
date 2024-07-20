@@ -50,14 +50,18 @@ namespace TinySki
 
             float flagY = 0;
             Vector3 flagPosition = new Vector3();
-            
+            int randomFlagOffsetMaxPixel = 2;
             while (flagY > finishLineY)
             {
                 flagPosition.x = flagSpawnX;
                 flagPosition.y = flagY;
+                float randomFlagOffset = Random.Range(-randomFlagOffsetMaxPixel, randomFlagOffsetMaxPixel) / 100f;
+                flagPosition.x += randomFlagOffset;
                 Instantiate(blueFlagPrefab, flagPosition, Quaternion.identity, transform);
-
-                flagPosition.x *= -1;
+                
+                flagPosition.x = -flagSpawnX;
+                randomFlagOffset = Random.Range(-randomFlagOffsetMaxPixel, randomFlagOffsetMaxPixel) / 100f;
+                flagPosition.x += randomFlagOffset;
                 Instantiate(blueFlagPrefab, flagPosition, Quaternion.identity, transform);
                 flagY -= flagYSpace;
             }
@@ -77,8 +81,15 @@ namespace TinySki
                 Vector3 obstaclePosition = new Vector3();
                 obstaclePosition.x = Random.Range(-maxObstacleX, maxObstacleX) / 100f;
                 obstaclePosition.y = (-i - 3) * obstacleYSpace;
-                GameObject randomObstacle = obstaclePrefabs[0];
-                obstacles[i] = Instantiate(randomObstacle, obstaclePosition, Quaternion.identity, transform);
+                int randomObstacleIndex = Random.Range(0, obstaclePrefabs.Length);
+                //print(randomObstacleIndex);
+                GameObject randomObstacle = obstaclePrefabs[randomObstacleIndex];
+
+                Quaternion obstacleRotation =
+                    (Random.Range(0, 2) == 0) ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+                
+                obstacles[i] = Instantiate(randomObstacle, obstaclePosition, obstacleRotation, transform);
+                
             }
 
             gameUi = FindAnyObjectByType<GameUi>();
@@ -169,7 +180,7 @@ namespace TinySki
                 {
                     OnFail();
                 }
-                print(timeLimit);
+                //print(timeLimit);
                 yield return wait;
                 
             }

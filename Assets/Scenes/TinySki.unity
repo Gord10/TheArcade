@@ -670,13 +670,14 @@ MonoBehaviour:
   gameState: 0
   obstaclePrefabs:
   - {fileID: 4745526092711416404, guid: bea72f2a076f0734993856143130705a, type: 3}
+  - {fileID: 1390539463333746361, guid: 9e65c4c2fbb91144b95cf7a79ceed2af, type: 3}
   obstacleAmount: 60
   maxObstacleX: 80
-  obstacleYSpace: 0.64
+  obstacleYSpace: 0.8
   blueFlagPrefab: {fileID: 2961487913199232393, guid: b82b2b463973af04fae170edcf7f0b0d, type: 3}
   redFlagPrefab: {fileID: 2961487913199232393, guid: 0c1e7ced72c54a747b40f35ebbb0d008, type: 3}
   flagSpawnX: -1.28
-  flagYSpace: 0.32
+  flagYSpace: 0.24
   player: {fileID: 52187999}
   npc: {fileID: 879025087}
 --- !u!1 &792162013
@@ -2174,7 +2175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2027141359630342587, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 3458738284519912800, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_Sprite
