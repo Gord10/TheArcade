@@ -17,7 +17,7 @@ namespace Arena
         protected static readonly int Hit = Animator.StringToHash("Hit");
         private static readonly int Dead = Animator.StringToHash("Dead");
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             characterController = GetComponent<CharacterController>();
             animator = GetComponent<Animator>();
