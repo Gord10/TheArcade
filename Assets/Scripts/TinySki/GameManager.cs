@@ -15,15 +15,7 @@ namespace TinySki
 
         private AudioSource audioSource;
 
-        public enum GameState
-        {
-            Title,
-            InGame,
-            Success,
-            Fail
-        }
-
-        public GameState gameState = GameState.Title;
+        public ArcadeShared.GameState gameState = GameState.Title;
         
         [Header("Obstacles")]
         public GameObject[] obstaclePrefabs;
@@ -43,7 +35,7 @@ namespace TinySki
         public Player npc;
 
         private GameObject[] obstacles;
-        private GameUi gameUi;
+        private ArcadeGameUi gameUi;
         private DialogueUi dialogueUi;
         
         private void Awake()
@@ -94,7 +86,7 @@ namespace TinySki
                 
             }
 
-            gameUi = FindAnyObjectByType<GameUi>();
+            gameUi = FindAnyObjectByType<ArcadeGameUi>();
             dialogueUi = FindAnyObjectByType<DialogueUi>();
             dialogueUi.gameObject.SetActive(false);
             SetGameState(GameState.Title);

@@ -1,4 +1,5 @@
 using System;
+using ArcadeShared;
 using UnityEngine;
 
 namespace TinySki
@@ -30,7 +31,7 @@ namespace TinySki
                 rigidbody2D.velocity *= 0.96f; //Gradually slow down
             }
 
-            if (gameManager && gameManager.gameState == GameManager.GameState.InGame)
+            if (gameManager && gameManager.gameState == GameState.InGame)
             {
                 rigidbody2D.AddForce(desiredMovement, ForceMode2D.Force);
             }

@@ -213,7 +213,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1570111814}
-        m_TargetAssemblyTypeName: TinySki.GameUi, TinySki
+        m_TargetAssemblyTypeName: ArcadeShared.ArcadeGameUi, ArcadeShared
         m_MethodName: ReturnToArcadeHouse
         m_Mode: 1
         m_Arguments:
@@ -41496,7 +41496,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1570111809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4335e663aaa7c624085a717308f7f0db, type: 3}
+  m_Script: {fileID: 11500000, guid: b5cc6774e07ef9d4182d96e8adf670ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inGameScreen: {fileID: 2027856027}
@@ -42265,7 +42265,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1570111814}
-        m_TargetAssemblyTypeName: TinySki.GameUi, TinySki
+        m_TargetAssemblyTypeName: ArcadeShared.ArcadeGameUi, ArcadeShared
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:

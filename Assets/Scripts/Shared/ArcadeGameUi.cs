@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using ArcadeShared;
-namespace TinySki
+namespace ArcadeShared
 {
-    public class GameUi : MonoBehaviour
+    public class ArcadeGameUi : MonoBehaviour
     {
         public GameObject inGameScreen;
         public GameObject titleScreen;
@@ -17,14 +17,14 @@ namespace TinySki
 
         public Button replayButton;
         
-        public void SetScreen(GameManager.GameState gameState)
+        public void SetScreen(GameState gameState)
         {
-            bool isResult = gameState is GameManager.GameState.Success or GameManager.GameState.Fail;
-            inGameScreen.SetActive(gameState == GameManager.GameState.InGame);
-            titleScreen.SetActive(gameState == GameManager.GameState.Title);
+            bool isResult = gameState is GameState.Success or GameState.Fail;
+            inGameScreen.SetActive(gameState == GameState.InGame);
+            titleScreen.SetActive(gameState == GameState.Title);
             resultScreen.SetActive(isResult);
-            successText.SetActive(gameState == GameManager.GameState.Success);
-            tryAgainText.SetActive(gameState == GameManager.GameState.Fail);
+            successText.SetActive(gameState == GameState.Success);
+            tryAgainText.SetActive(gameState == GameState.Fail);
 
             if (isResult)
             {
