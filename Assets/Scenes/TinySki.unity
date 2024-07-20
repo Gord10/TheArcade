@@ -41176,6 +41176,7 @@ MonoBehaviour:
   successText: {fileID: 1771468996}
   tryAgainText: {fileID: 501378982}
   replayButton: {fileID: 2023470949}
+  hearts: []
 --- !u!1 &1694836090
 GameObject:
   m_ObjectHideFlags: 0
@@ -41460,6 +41461,7 @@ GameObject:
   - component: {fileID: 1842897257}
   - component: {fileID: 1842897256}
   - component: {fileID: 1842897259}
+  - component: {fileID: 1842897260}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -41554,6 +41556,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996afae6bc4b9c54c881aa4b0e691af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1842897260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842897255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349c8a0cb93285145b619634e755ccc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.3
+  strength: 0.1
 --- !u!1 &1907346278
 GameObject:
   m_ObjectHideFlags: 0

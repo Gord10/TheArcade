@@ -11,7 +11,8 @@ namespace ArcadeShared
         public float strength = 1;
         public void Shake()
         {
-            transform.DOShakePosition(duration, strength);
+            //transform.DOShakePosition(duration, strength);
+            transform.DOShakeRotation(duration, strength);
         }
 
         private void Update()

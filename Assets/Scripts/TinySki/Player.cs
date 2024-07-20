@@ -13,13 +13,14 @@ namespace TinySki
         public float npcObstacleAvoidance = 0.2f;
         public float desiredMinDistanceFromPlayer = 0.2f; //NPC will use this value to know when to avoid the player
         public float yCatchUpThreshold = 1f; //If y difference between the friend is higher than this, then NPC will try to catch up with the friend
-        
+        private CameraShake cameraShake;
         
         private Player friend;
 
         protected override void Awake()
         {
             base.Awake();
+            cameraShake = FindAnyObjectByType<CameraShake>();
             desiredMovement = new Vector2();
             
             Player[] players = FindObjectsByType<Player>(FindObjectsSortMode.None);
@@ -137,6 +138,10 @@ namespace TinySki
                 audio.volume = other.relativeVelocity.magnitude;
                 audio.pitch = Random.Range(0.95f, 1.05f);
                 audio.Play();
+                if (!isNpc)
+                {
+                    cameraShake.Shake();
+                }
             }
         }
     }

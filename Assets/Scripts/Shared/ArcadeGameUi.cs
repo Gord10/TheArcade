@@ -37,7 +37,7 @@ namespace ArcadeShared
 
         public void ShowCountdown(int seconds)
         {
-            countdownText.text = $"0:{seconds}";
+            countdownText.text = $"0:{seconds:00}";
         }
 
         public void ShowLives(int currentLives)

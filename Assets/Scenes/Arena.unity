@@ -1109,7 +1109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924402c25885d0f4a9569329f5dadef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1.5
+  movementSpeed: 1
   rotateSpeed: 800
   speech: {fileID: 1364071284}
   targetPoint: {fileID: 1065498421}
@@ -9347,7 +9347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527087d695fe5424bb4b522840f0ce38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1.5
+  movementSpeed: 1
   rotateSpeed: 300
   speech: {fileID: 1074275132}
   targetPoint: {fileID: 941280068}
