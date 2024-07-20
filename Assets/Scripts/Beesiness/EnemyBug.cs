@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyBug : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class EnemyBug : MonoBehaviour
     private void Awake()
     {
         startY = transform.position.y;
+        maxY -= Random.Range(0f, 0.1f);
     }
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
