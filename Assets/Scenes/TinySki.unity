@@ -1214,7 +1214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1291435473
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42145,6 +42145,22 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d57891aeb1defe545a246694ba5be4ff, type: 2}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.4039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.6431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.36862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4284982366
+      objectReference: {fileID: 0}
     - target: {fileID: 6191029104580387170, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: isNpc
       value: 1
@@ -42527,6 +42543,22 @@ PrefabInstance:
     - target: {fileID: 2027141359630342587, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.6627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.46274513
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.16470589
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4289295914
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
