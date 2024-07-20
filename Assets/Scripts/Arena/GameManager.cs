@@ -15,6 +15,7 @@ namespace Arena
         public Transform[] throwableSpawnPoints;
         public float throwSpeed = 10;
         public int timeLimit = 60;
+        public int lives = 3;
 
         public Throwable latestThrowable;
 
@@ -26,6 +27,7 @@ namespace Arena
         private void Awake()
         {
             gameUi = FindAnyObjectByType<ArcadeGameUi>();
+            gameUi.ShowLives(lives);
             SetGameState(GameState.Title);
             girlSpeech = gladiators[0].speech;
             boySpeech = gladiators[1].speech;
@@ -138,15 +140,21 @@ namespace Arena
             }
         }
 
-        public void OnPlayerHit()
+        public void OnPlayerHit(Gladiator hitGladiator)
         {
             if (gameState == GameState.InGame)
             {
-                StopCoroutine(ThrowItemsToGladiators());
-                StopCoroutine(Countdown());
-                SetGameState(GameState.Fail);
-                gladiators[0].StopMovement();
-                gladiators[1].StopMovement();
+                lives--;
+                gameUi.ShowLives(lives);
+                if (lives <= 0)
+                {
+                    StopCoroutine(ThrowItemsToGladiators());
+                    StopCoroutine(Countdown());
+                    SetGameState(GameState.Fail);
+                    hitGladiator.Fall();
+                    gladiators[0].StopMovement();
+                    gladiators[1].StopMovement();
+                }
             }
         }
     }

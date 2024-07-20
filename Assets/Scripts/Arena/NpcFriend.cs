@@ -39,13 +39,13 @@ namespace Arena
             movementDirection.y = 0;
             movementDirection = Vector3.ClampMagnitude(movementDirection, 1);
             Vector3 movement = movementDirection * (Time.deltaTime * movementSpeed);
-            
+            movement += Vector3.down * 1; 
             characterController.Move(movement);
             animator.SetBool(Walking, movementDirection.sqrMagnitude > 0.02f);
 
-            if (movement.sqrMagnitude > 0)
+            if (movementDirection.sqrMagnitude > 0)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(movement);
+                Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
             }
         }

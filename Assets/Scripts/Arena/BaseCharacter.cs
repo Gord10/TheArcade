@@ -15,6 +15,7 @@ namespace Arena
         private static readonly int Attack1 = Animator.StringToHash("Attack");
         protected static readonly int Walking = Animator.StringToHash("Walking");
         protected static readonly int Hit = Animator.StringToHash("Hit");
+        private static readonly int Dead = Animator.StringToHash("Dead");
 
         protected void Awake()
         {
@@ -24,7 +25,8 @@ namespace Arena
         }
         public void Fall()
         {
-            
+            animator.SetBool(Dead, true);
+            print("Fall");
         }
 
         public void StopMovement()

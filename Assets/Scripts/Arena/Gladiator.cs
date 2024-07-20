@@ -11,7 +11,7 @@ namespace Arena
         public void OnHit()
         {
             animator.SetTrigger(Hit);
-            gameManager.OnPlayerHit();
+            gameManager.OnPlayerHit(this);
             speech.Say("Ouch!", 1f);
         }
     }

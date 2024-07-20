@@ -16,6 +16,7 @@ namespace ArcadeShared
         public GameObject tryAgainText;
 
         public Button replayButton;
+        public Image[] hearts;
         
         public void SetScreen(GameState gameState)
         {
@@ -35,6 +36,15 @@ namespace ArcadeShared
         public void ShowCountdown(int seconds)
         {
             countdownText.text = $"0:{seconds}";
+        }
+
+        public void ShowLives(int currentLives)
+        {
+            int i;
+            for (i = 0; i < hearts.Length; i++)
+            {
+                hearts[i].color = (currentLives <= i) ? Color.black : Color.white;
+            }
         }
 
         public void RestartGame()
