@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace TinySki
 {
@@ -144,7 +145,16 @@ namespace TinySki
             {
                 animator.speed = 1f * -rigidbody2D.velocity.y;
             }
-            
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.collider.CompareTag("Obstacle"))
+            {
+                audio.volume = other.relativeVelocity.magnitude;
+                audio.pitch = Random.Range(0.95f, 1.05f);
+                audio.Play();
+            }
         }
     }
 

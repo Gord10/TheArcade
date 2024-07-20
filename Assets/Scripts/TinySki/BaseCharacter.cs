@@ -8,6 +8,7 @@ namespace TinySki
         public float speed = 2;
         protected Rigidbody2D rigidbody2D;
         protected Animator animator;
+        protected AudioSource audio;
 
         protected Vector2 desiredMovement;
         protected GameManager gameManager;
@@ -19,6 +20,7 @@ namespace TinySki
             rigidbody2D = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             gameManager = FindAnyObjectByType<GameManager>();
+            audio = GetComponent<AudioSource>();
         }
 
         private void FixedUpdate()

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - ArcadeMachine
+  - Obstacle
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,8 @@ namespace TinySki
         public float finishLineY = -30;
         public int timeLimit = 60;
 
+        private AudioSource audioSource;
+
         public enum GameState
         {
             Title,
@@ -96,6 +98,7 @@ namespace TinySki
             dialogueUi = FindAnyObjectByType<DialogueUi>();
             dialogueUi.gameObject.SetActive(false);
             SetGameState(GameState.Title);
+            audioSource = GetComponent<AudioSource>();
         }
 
         //NPC will try to avoid the next obstacle. They need to know the position of the next one for that.
@@ -193,6 +196,7 @@ namespace TinySki
                 SetGameState(GameState.Success);
                 print("Success!");
                 StopCoroutine(StartCountDown());
+                audioSource.Play();
             }
         }
 
