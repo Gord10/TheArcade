@@ -41177,6 +41177,7 @@ MonoBehaviour:
   tryAgainText: {fileID: 501378982}
   replayButton: {fileID: 2023470949}
   hearts: []
+  progressBar: {fileID: 0}
 --- !u!1 &1694836090
 GameObject:
   m_ObjectHideFlags: 0
@@ -41664,13 +41665,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1348163284400110622, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_Volume
+      value: 0.364
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348163284400110622, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 32f5122e5fa630846980078663a15a4f, type: 3}
+      objectReference: {fileID: 8300000, guid: e8f4d612dd8f9334ba0768b4bb08882a, type: 3}
     - target: {fileID: 1348163284400110622, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 32f5122e5fa630846980078663a15a4f, type: 3}
+      objectReference: {fileID: 8300000, guid: e8f4d612dd8f9334ba0768b4bb08882a, type: 3}
     - target: {fileID: 2027141359630342587, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_Name
       value: NPC
@@ -41696,6 +41701,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: d57891aeb1defe545a246694ba5be4ff, type: 2}
     - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_fontColor.b
       value: 0.4039216
       objectReference: {fileID: 0}
@@ -41706,6 +41715,10 @@ PrefabInstance:
     - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_fontColor.r
       value: 0.36862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -42083,16 +42096,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1348163284400110622, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_Volume
+      value: 0.364
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348163284400110622, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 32f5122e5fa630846980078663a15a4f, type: 3}
+      objectReference: {fileID: 8300000, guid: e8f4d612dd8f9334ba0768b4bb08882a, type: 3}
     - target: {fileID: 1348163284400110622, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 32f5122e5fa630846980078663a15a4f, type: 3}
+      objectReference: {fileID: 8300000, guid: e8f4d612dd8f9334ba0768b4bb08882a, type: 3}
     - target: {fileID: 2027141359630342587, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontSize
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_fontColor.b
@@ -42105,6 +42126,10 @@ PrefabInstance:
     - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_fontColor.r
       value: 0.16470589
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5192417838834152253, guid: 9b8167a7dac96384087989d3a7669e6e, type: 3}
       propertyPath: m_fontColor32.rgba
