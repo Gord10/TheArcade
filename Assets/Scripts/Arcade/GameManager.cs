@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using ArcadeShared;
 using DG.Tweening;
 using TMPro;
 using Unity.Cinemachine;
@@ -30,6 +31,12 @@ namespace ArcadeHouse
             
             titleText.gameObject.SetActive(false);
             thanksForPlayingText.gameObject.SetActive(false);
+            
+        }
+
+        private void Start()
+        {
+            Music.Instance.PlayArcadeHouse();
         }
 
         public void OnGameComplete()

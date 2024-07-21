@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -12,4 +13,14 @@ public class Door : MonoBehaviour
         audioSource.Play();
         animator.SetTrigger(Open1);      
     }
+
+    #if CHEAT_ENABLED
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Open();
+        }
+    }
+#endif
 }

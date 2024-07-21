@@ -31,7 +31,8 @@ namespace ArcadeHouse
             if (cinemachineCamera)
             {
                 cinemachineCamera.gameObject.SetActive(true);
-                Invoke("StartArcadeGame", 2);
+                Invoke(nameof(StartArcadeGame), 2);
+                Music.Instance.FadeOut(2);
             }
         }
 

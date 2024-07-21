@@ -139,6 +139,10 @@ namespace Arena
                 StartCoroutine(Countdown());
                 girlSpeech.Say("Why do they always use \"V\" as \"U\" in Roman texts?", 3f);
             }
+            
+            #if CHEAT_ENABLED
+
+            #endif
         }
 
         public void OnPlayerHit(Gladiator hitGladiator)

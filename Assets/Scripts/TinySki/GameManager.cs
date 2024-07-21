@@ -89,6 +89,12 @@ namespace TinySki
             SetGameState(GameState.Title);
             audioSource = GetComponent<AudioSource>();
             gameUi.UpdateProgressBar(-player.transform.position.y, -finishLineY);
+            
+        }
+
+        private void Start()
+        {
+            Music.Instance.PlayTinySki();
         }
 
         //NPC will try to avoid the next obstacle. They need to know the position of the next one for that.
@@ -124,6 +130,13 @@ namespace TinySki
             if (gameState == GameState.InGame)
             {
                 gameUi.UpdateProgressBar(-player.transform.position.y, -finishLineY);
+                
+                #if CHEAT_ENABLED
+                if (Input.GetKeyDown(KeyCode.O))
+                {
+                    OnSuccess();
+                }
+                #endif
             }
         }
 
@@ -202,7 +215,7 @@ namespace TinySki
             if (gameState == GameState.InGame)
             {
                 SetGameState(GameState.Fail);
-                print("Success!");
+                
                 StopCoroutine(StartCountDown());
             }
         }

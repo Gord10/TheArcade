@@ -480,6 +480,9 @@ PlayerSettings:
   - serializedVersion: 3
     m_BuildTarget: Android
     m_Formats: 03000000
+  - serializedVersion: 3
+    m_BuildTarget: WebGL
+    m_Formats: 05000000
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
   actionOnDotNetUnhandledException: 1
@@ -756,7 +759,7 @@ PlayerSettings:
     QNX: UNITY_POST_PROCESSING_STACK_V2;DOTWEEN
     Standalone: UNITY_POST_PROCESSING_STACK_V2;DOTWEEN
     VisionOS: UNITY_POST_PROCESSING_STACK_V2;DOTWEEN
-    WebGL: UNITY_POST_PROCESSING_STACK_V2;DOTWEEN
+    WebGL: UNITY_POST_PROCESSING_STACK_V2;DOTWEEN;CHEAT_ENABLED
     Windows Store Apps: DOTWEEN
     XboxOne: UNITY_POST_PROCESSING_STACK_V2;DOTWEEN
     iPhone: DOTWEEN

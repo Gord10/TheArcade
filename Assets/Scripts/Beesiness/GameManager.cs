@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 
         SetGameState(GameState.Title);
         audioSource = GetComponent<AudioSource>();
+        Music.Instance.PlayBeesiness();
     }
 
     void StartGame()
