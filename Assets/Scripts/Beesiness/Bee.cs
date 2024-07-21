@@ -7,6 +7,9 @@ public class Bee : MonoBehaviour
     public float upSpeed = 0.4f;
     public float yFailThreshold = -0.5f; //Player loses the game if they are below this
     public bool isNpc = false;
+    public AudioSource pickUpAudio;
+    public AudioSource losePollenAudio;
+    
     private GameManager gameManager;
     private float y;
 
@@ -69,7 +72,16 @@ public class Bee : MonoBehaviour
     {
         if (other.CompareTag("PollenEfector") && other.TryGetComponent(out PollenEfector pollenEfector))
         {
-            gameManager.IncreasePollen(pollenEfector.pollenPerSecond * Time.fixedDeltaTime);
+            float pollenPerSecond = pollenEfector.pollenPerSecond;
+            gameManager.IncreasePollen(pollenPerSecond * Time.fixedDeltaTime);
+            if (pollenPerSecond> 0 && pickUpAudio && !pickUpAudio.isPlaying)
+            {
+                pickUpAudio.Play();
+            }
+            else if (pollenPerSecond < 0 && losePollenAudio && !losePollenAudio.isPlaying)
+            {
+                losePollenAudio.Play();
+            }
         }
     }
 }

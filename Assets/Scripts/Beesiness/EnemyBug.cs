@@ -8,9 +8,12 @@ public class EnemyBug : MonoBehaviour
     public float maxY = 0;
     public float sinSpeed = 3;
     public float xSpeed = 0.4f;
+    public AudioSource jumpAudio;
+    
     private float startY = 0;
     private GameManager gameManager;
 
+    private bool isJumping = false;
     private void Awake()
     {
         startY = transform.position.y;
@@ -35,8 +38,26 @@ public class EnemyBug : MonoBehaviour
         float t = Mathf.Sin(Time.timeSinceLevelLoad * sinSpeed);
         t = Mathf.Abs(t);
         float y = Mathf.Lerp(startY, maxY, t);
-
+        
         Vector3 localPosition = transform.localPosition;
+
+        if (localPosition.y < y)
+        {
+            if (!isJumping)
+            {
+                float x = transform.position.x;
+                if (jumpAudio && x <= 2f && x >= -1f)
+                {
+                    jumpAudio.Play();
+                }
+                isJumping = true;
+            }
+        }
+        else
+        {
+            isJumping = false;
+        }
+        
         localPosition.x -= xSpeed * Time.deltaTime;
         localPosition.y = y;
         transform.localPosition = localPosition;

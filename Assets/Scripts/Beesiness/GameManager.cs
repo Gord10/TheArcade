@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
                     break;
                     
                 case 55:
-                    playerSpeech.Say("Hmm, I didn't see this game.", 3);
+                    playerSpeech.Say("Hmm...", 1);
                     break;
                 
                 case 47:
@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
                     break;
                 
                 case 36:
-                    npcSpeech.Say("Maybe to make the game harder?", 3f);
+                    npcSpeech.Say("Maybe to make the game *actually* hard?", 3f);
                     break;
                 
                 case 32:
