@@ -18,7 +18,12 @@ public class GameManager : MonoBehaviour
     
     public float pollen = 0;
     public float targetPollen = 10;
+
+    public CharacterSpeech playerSpeech;
+    public CharacterSpeech npcSpeech;
+    
     private ArcadeGameUi gameUi;
+    private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -42,6 +47,7 @@ public class GameManager : MonoBehaviour
         gameUi.UpdateProgressBar(pollen, targetPollen);
 
         SetGameState(GameState.Title);
+        audioSource = GetComponent<AudioSource>();
     }
 
     void StartGame()
@@ -60,6 +66,7 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GameState.Success);
         StopCoroutine(StartCountdown());
+        audioSource.Play();
     }
 
     private void Update()
@@ -105,6 +112,62 @@ public class GameManager : MonoBehaviour
         {
             yield return wait;
             countdown--;
+
+            switch (countdown)
+            {
+                case 58:
+                    npcSpeech.Say("We collect pollen.", 3f);
+                    break;
+                    
+                case 55:
+                    playerSpeech.Say("Hmm, I didn't see this game.", 3);
+                    break;
+                
+                case 47:
+                    npcSpeech.Say("Don't touch the mushrooms.", 2f);
+                    break;
+                
+                case 45:
+                    npcSpeech.Say("We lose pollen then.", 2f);
+                    break;
+                
+                case 43:
+                    playerSpeech.Say("Why?", 1.5f);
+                    break;
+                
+                case 41:
+                    playerSpeech.Say("That's dumb.", 2f);
+                    break;
+                
+                case 36:
+                    npcSpeech.Say("Maybe to make the game harder?", 3f);
+                    break;
+                
+                case 32:
+                    playerSpeech.Say("Makes sense.", 2f);
+                    break;
+                
+                case 28:
+                    playerSpeech.Say("How's dad holding?", 3f);
+                    break;
+                    
+                case 25:
+                    npcSpeech.Say("As usual.", 3f);
+                    break;
+                    
+                case 22:
+                    npcSpeech.Say("How about mom?", 3f);
+                    break;
+                    
+                case 19:
+                    playerSpeech.Say("Same. But she will get better.", 3f);
+                    break;
+                    
+                case 15:
+                    playerSpeech.Say("Maybe this was for the best.", 4f);
+                    break;
+            }
+            
             gameUi.ShowCountdown(countdown);
         }
 

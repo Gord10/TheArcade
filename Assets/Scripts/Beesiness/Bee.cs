@@ -6,6 +6,7 @@ public class Bee : MonoBehaviour
 {
     public float upSpeed = 0.4f;
     public float yFailThreshold = -0.5f; //Player loses the game if they are below this
+    public bool isNpc = false;
     private GameManager gameManager;
     private float y;
 
@@ -28,7 +29,17 @@ public class Bee : MonoBehaviour
         if (gameManager.gameState == GameState.InGame)
         {
             float yMovement = -gameManager.gravity;
-            yMovement += (Input.GetAxis("Vertical")) * upSpeed;
+
+            if (isNpc)
+            {
+                yMovement = 0;
+            }
+            else
+            {
+                yMovement += (Input.GetAxis("Vertical")) * upSpeed;
+            }
+            
+            
             transform.position += Vector3.up * (yMovement * Time.deltaTime);
 
             if (transform.position.y < yFailThreshold )
