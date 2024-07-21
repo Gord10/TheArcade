@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         SetGameState(GameState.Success);
         StopCoroutine(StartCountdown());
         audioSource.Play();
+        ArcadeSceneManager.OnGameSuccess();
     }
 
     private void Update()

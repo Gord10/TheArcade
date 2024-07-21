@@ -88,6 +88,7 @@ namespace TinySki
             gameUi = FindAnyObjectByType<ArcadeGameUi>();
             SetGameState(GameState.Title);
             audioSource = GetComponent<AudioSource>();
+            gameUi.UpdateProgressBar(-player.transform.position.y, -finishLineY);
         }
 
         //NPC will try to avoid the next obstacle. They need to know the position of the next one for that.
@@ -119,6 +120,11 @@ namespace TinySki
                 SetGameState(GameState.InGame);
                 StartCoroutine(StartCountDown());
             }
+
+            if (gameState == GameState.InGame)
+            {
+                gameUi.UpdateProgressBar(-player.transform.position.y, -finishLineY);
+            }
         }
 
         void SetGameState(GameState newGameState)
@@ -134,6 +140,7 @@ namespace TinySki
             {
                 timeLimit--;
                 gameUi.ShowCountdown(timeLimit);
+                
                 
                 if (timeLimit == 58)
                 {
