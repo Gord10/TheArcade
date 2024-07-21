@@ -11,11 +11,12 @@ namespace ArcadeHouse
 {
     public class GameManager : MonoBehaviour
     {
+        public Player girl, boy;
+        [Header("End game")]
         public Light directionalLight;
         public float lightFadeOutTime = 3;
         public TextMeshProUGUI titleText;
         public TextMeshProUGUI thanksForPlayingText;
-        public Player girl, boy;
         
         private Door door;
         private void Awake()
@@ -57,6 +58,11 @@ namespace ArcadeHouse
 
         public IEnumerator GameCompleteCutscene()
         {
+            CinematicCanvas cinematicCanvas = FindAnyObjectByType<CinematicCanvas>();
+            if (cinematicCanvas)
+            {
+                cinematicCanvas.StartCinematic(2);
+            }
             yield return new WaitForSeconds(8);
             directionalLight.DOIntensity(0, lightFadeOutTime);
 
