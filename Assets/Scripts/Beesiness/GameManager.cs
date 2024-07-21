@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
+using ArcadeShared;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] spawnObjectPrefabs;
@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     public float gravity = 0.1f;
 
     public float worldMovementBaseSpeed = 0.3f;
+
+    public float pollen = 0;
+    public float targetPollen = 10;
+    private ArcadeGameUi gameUi;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Awake()
@@ -29,6 +34,9 @@ public class GameManager : MonoBehaviour
             position.y = prefabToSpawn.transform.position.y;
             Instantiate(prefabToSpawn, position, Quaternion.identity, spawnedObjectsParent);
         }
+
+        gameUi = FindAnyObjectByType<ArcadeGameUi>();
+        gameUi.UpdateProgressBar(pollen, targetPollen);
     }
 
     private void Update()
@@ -37,7 +45,12 @@ public class GameManager : MonoBehaviour
         worldMovementSpeed += Input.GetAxis("Horizontal") * 0.1f;
         spawnedObjectsParent.transform.position +=
             Vector3.left * (Time.deltaTime * worldMovementSpeed);
-        
-        
+    }
+
+    public void IncreasePollen(float increace)
+    {
+        pollen += increace;
+        pollen = Mathf.Clamp(pollen, 0, targetPollen);
+        gameUi.UpdateProgressBar(pollen, targetPollen);
     }
 }

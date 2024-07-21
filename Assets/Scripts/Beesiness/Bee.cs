@@ -4,7 +4,6 @@ using UnityEngine;
 public class Bee : MonoBehaviour
 {
     public float upSpeed = 0.4f;
-    public float pollen = 0;
     private GameManager gameManager;
     private float y;
 
@@ -39,8 +38,7 @@ public class Bee : MonoBehaviour
     {
         if (other.CompareTag("PollenEfector") && other.TryGetComponent(out PollenEfector pollenEfector))
         {
-            pollen += pollenEfector.pollenPerSecond * Time.fixedDeltaTime;
-            print(pollen);
+            gameManager.IncreasePollen(pollenEfector.pollenPerSecond * Time.fixedDeltaTime);
         }
     }
 }

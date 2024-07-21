@@ -19,6 +19,7 @@ namespace ArcadeShared
 
         public Button replayButton;
         public Image[] hearts;
+        public Image progressBar;
         
         public void SetScreen(GameState gameState)
         {
@@ -65,6 +66,15 @@ namespace ArcadeShared
         public void ReturnToArcadeHouse()
         {
             ArcadeSceneManager.ReturnBackToArcadeHouse();
+        }
+
+        public void UpdateProgressBar(float currentValue, float maxValue)
+        {
+            float ratio = currentValue / maxValue;
+            ratio *= 128f;
+            ratio = (int)ratio;
+            ratio /= 128f;
+            progressBar.fillAmount = ratio;
         }
     }
 }

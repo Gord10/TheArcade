@@ -1,3 +1,16 @@
 {
-	"name": "Beesiness"
+    "name": "Beesiness",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6fae1da0c0dc4844ba3f0ed8c25da035"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
