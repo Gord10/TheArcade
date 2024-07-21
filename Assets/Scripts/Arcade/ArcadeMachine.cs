@@ -8,10 +8,16 @@ namespace ArcadeHouse
 {
     public class ArcadeMachine : MonoBehaviour
     {
+        public static int lastChosenArcadeId = -1;
+        
         public CinemachineCamera cinemachineCamera;
         public string sceneName;
         public Transform indicatorCoin;
         public Transform indicatorTrophy;
+        public Transform player1StandPoint;
+        public Transform player2StandPoint;
+        
+        public int arcadeId = 0;
 
         private bool isGameSucceeded = false;
         private void Awake()
@@ -30,6 +36,7 @@ namespace ArcadeHouse
         {
             if (cinemachineCamera)
             {
+                lastChosenArcadeId = arcadeId;
                 cinemachineCamera.gameObject.SetActive(true);
                 Invoke(nameof(StartArcadeGame), 2);
                 Music.Instance.FadeOut(2);
@@ -39,6 +46,21 @@ namespace ArcadeHouse
         void StartArcadeGame()
         {
             SceneManager.LoadScene(sceneName);
+        }
+
+        public static ArcadeMachine GetMachineById(int id)
+        {
+            ArcadeMachine[] machines = FindObjectsByType<ArcadeMachine>(FindObjectsSortMode.None);
+            int i;
+            for (i = 0; i < machines.Length; i++)
+            {
+                if (machines[i].arcadeId == id)
+                {
+                    return machines[i];
+                }
+            }
+
+            return null;
         }
     }
 }

@@ -15,6 +15,7 @@ namespace ArcadeHouse
         public float lightFadeOutTime = 3;
         public TextMeshProUGUI titleText;
         public TextMeshProUGUI thanksForPlayingText;
+        public Player girl, boy;
         
         private Door door;
         private void Awake()
@@ -31,7 +32,17 @@ namespace ArcadeHouse
             
             titleText.gameObject.SetActive(false);
             thanksForPlayingText.gameObject.SetActive(false);
-            
+            PlacePlayersOnCorrectPoint();
+        }
+
+        void PlacePlayersOnCorrectPoint()
+        {
+            ArcadeMachine latestArcadeMachine = ArcadeMachine.GetMachineById(ArcadeMachine.lastChosenArcadeId);
+            if (latestArcadeMachine)
+            {
+                girl.transform.SetPositionAndRotation(latestArcadeMachine.player1StandPoint.position, latestArcadeMachine.player1StandPoint.rotation);
+                boy.transform.SetPositionAndRotation(latestArcadeMachine.player2StandPoint.position, latestArcadeMachine.player2StandPoint.rotation);
+            }
         }
 
         private void Start()
